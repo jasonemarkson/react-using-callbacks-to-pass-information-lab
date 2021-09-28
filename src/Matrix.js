@@ -13,14 +13,13 @@ export default class Matrix extends Component {
   }
 
   setSelectedColor = (newColor) => {
-    this.setState = ({
+    this.setState({
       selectedColor: newColor
     })
   }
 
   genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} selectedColor={this.state.selectedColor} />)
-    // since Cell only needs to know what color is selected (not change it), we can pass down that value from the Matrix's state (this.state.selectedColor) and add it as a prop
+    vals.map((val, idx) => <Cell key={idx} color={val} selectedColor={this.state.selectedColor} />) // replace me and render a cell component instead!
   )
 
   genMatrix = () => (
@@ -31,7 +30,6 @@ export default class Matrix extends Component {
     return (
       <div id="app">
         <ColorSelector setSelectedColor={this.setSelectedColor} />
-        {/* we pass down this prop to ColorSelector component to give it access to this function so it can change the color */}
         <div id="matrix">
           {this.genMatrix()}
         </div>
